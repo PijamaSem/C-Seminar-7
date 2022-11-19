@@ -73,3 +73,61 @@ void ShowArray (int[,] array)
         }
     }
 */
+// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+
+int [,] New2DArray = Create2dArrya();
+Show2DArray(New2DArray);
+double [] ResultArray  = CalcAvarege(New2DArray);
+ShowArray(ResultArray);
+int [,] Create2dArrya() // Создание двух мерного массива
+    {
+        Console.Write("Input number of rows: ");
+        int row  = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Input number of colums: ");
+         int colums  = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Input min possible value: ");
+        int min_Value  = Convert.ToInt32(Console.ReadLine());;
+        Console.Write("Input max possible value: ");
+        int max_Value  = Convert.ToInt32(Console.ReadLine());
+
+        int [,] CreateArrya = new int [row,colums];
+        for(int i=0; i<row; i++)
+        for(int j=0; j<colums;j++)
+            CreateArrya [i,j]=new Random().Next(min_Value,max_Value+1);
+    return CreateArrya;
+    }
+void Show2DArray (int[,] array)
+    {
+    for(int i=0; i<array.GetLength(0); i++)
+        {
+            for(int j=0; j<array.GetLength(1); j++)
+                {
+                    Console.Write(array[i,j] + " ");
+                }
+            Console.WriteLine(" ");
+        }
+    }
+
+double [] CalcAvarege(int[,]array)
+    {
+        double [] AvgArray = new double [array.GetLength(1)];
+            for(int j=0; j<array.GetLength(1);j++)
+        {
+                double sum=0;
+                for(int i=0; i<array.GetLength(0);i++)
+                {
+                    sum+=array[i,j];
+                    
+                }
+                AvgArray[j]=sum/array.GetLength(0);
+        }
+        return AvgArray;
+    }
+void ShowArray(double [] arr)
+    {
+    for (int i=0; i<arr.Length; i++)
+    {
+        Console.Write(arr[i] + " ");
+    }
+        Console.WriteLine();
+    }
